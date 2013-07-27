@@ -29,14 +29,14 @@
 	
 	dt:reportTitle="客户信息"
 	
-	dt:serachURL="http://pengcan2006.gotoip3.com/getList.php"
-	dt:addedAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/doAdd"
-	dt:editAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/doEdit"
-	dt:deleteAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/doDelete"
-	dt:multipleDeleteAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/doDelete"
-	dt:customActionURL="http://192.168.0.8:8088/android_ch24_serverside/custom"
-	dt:findEditItemByIdURL="http://pengcan2006.gotoip3.com/findEditItemById.php"
-	dt:findViewItemByIdURL="http://pengcan2006.gotoip3.com/findViewItemById.php"
+	dt:serachURL="http://192.168.0.8:8088/android_ch24_serverside/getList.jsp"
+	dt:addedAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/addAndGetList.jsp"
+	dt:editAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/editAndGetList.jsp"
+	dt:deleteAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/deleteAndGetList.jsp"
+	dt:multipleDeleteAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/multipleDeleteAndGetList.jsp"
+	dt:customActionURL=""
+	dt:findEditItemByIdURL="http://192.168.0.8:8088/android_ch24_serverside/findEditItemById.jsp"
+	dt:findViewItemByIdURL="http://192.168.0.8:8088/android_ch24_serverside/findViewItemById.jsp"
 	>
 	<!-- type:text|radio|checkBox -->
 	<searchPanel>
