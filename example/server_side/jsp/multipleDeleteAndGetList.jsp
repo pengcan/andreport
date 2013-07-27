@@ -15,9 +15,9 @@
 	//分页数据
 	System.out.println("itemsPerPage:"+itemsPerPage+"-----pageNumber:"+pageNumber);
 	
-	//id paramete
-	String id = request.getParameter("ids");
-	System.out.println("ids:"+id);		
+	//ids paramete
+	String ids = request.getParameter("ids");
+	System.out.println("ids:"+ids);		
 	
 
 	
