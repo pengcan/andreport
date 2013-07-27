@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <Button android:id="@+id/callAndReport" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="跳转到AndReport"
+        />
+    
+    <Button android:id="@+id/callSettings" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="跳转到Seetings"
+        />
+    
+    <Button android:id="@+id/updateDatagridStructure" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="修改Datagrid参数"
+        android:layout_centerInParent="true"
+        />
+    <Button android:id="@+id/updateListStructure" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="修改List参数"
+        android:layout_centerInParent="true"
+        />
+    
+</LinearLayout>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE AndReport PUBLIC
+	"-//AndReport Software Foundation//DTD AndReport Configuration 0.1//EN"
+	"http://www.andreport.cn/dtds/andreport_0_1.dtd">
+<andReport xmlns:dt="http://schemas.andreport.cn/cn.andreport.datatables">
+<dataTable
+	dt:lineColor="#FFCCCCCC"
+	dt:headerHeight="0" 
+	dt:rowHeight="40"
+	dt:headerBackgroundColors="[#FFE1E1E1,#FFCECECE,#FFE1E1E1]"
+	dt:evenRowBackgroundColor="#FFEEFFEE"
+	dt:oddRowBackgroundColor="#FFE1FFDA"
+
+	dt:canRemoveColumn="true"
+	dt:canAddColumn="true"
+	
+	dt:itemsPerPage="10"
+	
+	dt:showSearch="true"
+	dt:showSettings="true"
+	dt:showAdded="false"
+	dt:showMultipleDelete="false"
+	dt:showNavigationBar="true"
+	
+	dt:pagingType="useDropdown"
+	
+	dt:screenOrientation="landscape" 
+	
+	dt:reportTitle="客户查询"
+	
+	dt:serachURL="http://pengcan2006.gotoip3.com/getList.php"
+	dt:addedAndGetListActionURL="http://pengcan2006.gotoip3.com/addedAndGetList.php"
+	dt:editAndGetListActionURL="http://pengcan2006.gotoip3.com/editAndGetList.php"
+	dt:deleteAndGetListActionURL="http://pengcan2006.gotoip3.com/deleteAndGetList.php"
+	dt:multipleDeleteAndGetListActionURL="http://pengcan2006.gotoip3.com/multipleDeleteAndGetList.php"
+	dt:customActionURL=""
+	dt:findEditItemByIdURL="http://pengcan2006.gotoip3.com/findViewItemById.php"
+	dt:findViewItemByIdURL="http://pengcan2006.gotoip3.com/findEditItemById.php"
+	
+	>
+	<!-- type:text|radio|checkBox -->
+	<searchPanel>
+	    <searchItem dt:label="编号：" dt:key="id" dt:type="text" dt:remark=""/>
+	    <searchItem dt:label="姓名：" dt:key="cusName"/>
+	    <searchItem dt:label="性别：" dt:key="grade" dt:type="radio" dt:options="[男,女,不限]" dt:defaultValue="不限"/>
+	    <searchItem dt:label="电话：" dt:key="phoneNumber"/>
+	    <searchItem dt:label="状态：" dt:key="classStatus" dt:type="checkBox" dt:options="[高级客户,普通客户,潜在客户]" dt:defaultValues="[高级客户,普通客户]"/>
+	</searchPanel>
+	
+	<columns>
+
+	    <!-- 
+	     
+	     ___________________________________________________
+	     |                                                  |
+	     |  ~~~~~~~~~~~~                                    |
+	     |  |          |   #################################|
+	     |  | image    |     textContent          #right    |
+	     |  |          |                          #content  |
+	     |  |          |   #################################|
+	     |  ~~~~~~~~~~~~                                    |
+	     |  ################################################|
+	     |                   footerContent                  |
+	     |  ################################################|
+	     |__________________________________________________|
+	     
+	    
+	     -->
+	     
+	     
+		<column dt:dataFields="[id,cusName,grade,phoneNumber,status,photo,remark]" 
+				
+				dt:headerText="客户" 
+			
+				dt:itemRenderer="combination"
+				
+				dt:showLeftImage="true"
+				dt:showTextContent="true" 
+				dt:showFooterContent="false" 
+				dt:showRightContent="false" 
+				
+		    >
+
+		     
+
+		    <leftImageTemplate dt:imageURLFiled="photo"/>
+
+		     
+		    <contentTemplate>
+		    	<![CDATA[
+					<b><font color=#FF0A0A><textSize-30>#{cusName}</b></textSize-30></font>  &nbsp;&nbsp;&nbsp; <font color='green' ><textSize-24>客户状态：#{status}</textSize-24></font><br>
+					<font><textSize-24>客户编号：#{id} &nbsp;&nbsp;&nbsp;  #{grade} &nbsp;&nbsp;&nbsp;  电话：#{phoneNumber}</textSize-24><br>
+					<font><textSize-20>介绍：#{remark}</textSize-20>
+		    	]]>
+		    </contentTemplate>
+		    
+			<!--
+		    <rightTemplate>
+			    <![CDATA[
+			    	介绍：
+			    ]]>
+		    </rightTemplate>
+			
+		    
+		    <footerTemplate>
+			    <![CDATA[
+			    	介绍：#{remark}
+			    ]]>
+		    </footerTemplate>
+			-->
+			
+		</column>
+	</columns>
+</dataTable>
+</andReport>

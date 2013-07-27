@@ -1,0 +1,324 @@
+
+
+<!-- ========== Top Level Elements ======================================== -->
+<!-- ========== andReport element ======== -->
+<!-- The "andReport" element is the root of the configuration file hierarchy.-->
+<!ELEMENT andReport (dataTable)>
+
+
+
+<!-- ========== dataTable element ======== -->
+<!ELEMENT dataTable (searchPanel?,columns,editPanel?,addPanel?,viewPanel?)>
+
+<!ATTLIST dataTable screenOrientation CDATA (portrait|landscape) "landscape"> 
+
+<!-- int -->
+<!-- if not set, then width is 100% -->
+<!ATTLIST dataTable width CDATA #IMPLIED>  
+
+<!ATTLIST dataTable reportTitle CDATA #IMPLIED> 
+
+<!-- --------URL------------ -->
+<!ATTLIST dataTable serachURL CDATA #REQUIRED>
+<!ATTLIST dataTable addedAndGetListActionURL CDATA #IMPLIED>
+<!ATTLIST dataTable editAndGetListActionURL CDATA #IMPLIED>
+<!ATTLIST dataTable deleteAndGetListActionURL CDATA #IMPLIED>
+<!ATTLIST dataTable multipleDeleteAndGetListActionURL CDATA #IMPLIED>
+<!ATTLIST dataTable customActionURL CDATA #IMPLIED>
+<!ATTLIST dataTable findEditItemByIdURL CDATA #IMPLIED>
+<!ATTLIST dataTable findViewItemByIdURL CDATA #IMPLIED>
+
+<!-- -----navigation bar----- -->
+<!-- boolean -->
+<!ATTLIST dataTable showSettings CDATA (false|true) "true">
+<!ATTLIST dataTable showAdded CDATA (false|true) "false">
+<!ATTLIST dataTable showMultipleDelete CDATA (false|true) "false">
+<!ATTLIST dataTable showSearch CDATA (false|true) "false">
+<!ATTLIST dataTable showNavigationBar CDATA (false|true) "false">
+
+<!--   -----paging bar-----  -->
+<!-- type:int  -->
+<!ATTLIST dataTable itemsPerPage CDATA  "10">
+<!--
+	//maybe 'useDropdown' for List.  'usePagingBar' for datagrid
+	//TODO will change other way to implements paging
+-->
+<!ATTLIST dataTable pagingType CDATA (usePagingBar|useDropdown) "usePagingBar">
+
+<!--   -----table style----------- -->
+<!-- int -->
+<!ATTLIST dataTable headerHeight CDATA "40">
+<!ATTLIST dataTable rowHeight CDATA "40">
+
+<!-- color string -->
+<!ATTLIST dataTable lineColor CDATA "#FFCCCCCC">
+<!ATTLIST dataTable evenRowBackgroundColor CDATA "#FFEEFFEE">
+<!ATTLIST dataTable oddRowBackgroundColor CDATA "#FFE1FFDA">
+<!-- array -->
+<!ATTLIST dataTable headerBackgroundColors CDATA "[#FFE1E1E1,#FFCECECE,#FFE1E1E1]">
+
+<!-- -------------table's column------------  -->
+<!-- boolean -->
+<!ATTLIST dataTable canRemoveColumn CDATA (false|true) "false">
+<!ATTLIST dataTable canAddColumn CDATA (false|true) "false">
+
+
+
+
+<!-- ========== searchPanel element ======== -->
+<!ELEMENT searchPanel (searchItem+)>
+<!ELEMENT searchItem  EMPTY>
+<!ATTLIST searchItem label CDATA #REQUIRED>
+<!--
+	requirement. no default value. can't be null or empty.
+	when send parameter to server, the server side get data use key. 
+-->
+<!ATTLIST searchItem key CDATA #REQUIRED>
+<!ATTLIST searchItem remark CDATA #IMPLIED>
+<!--  'date' and more will be coming soon  -->
+<!ATTLIST searchItem type CDATA (text|radio|checkBox) "text">
+<!-- array like [male,female]  -->
+<!ATTLIST searchItem options CDATA #IMPLIED>
+<!-- 
+	//value option: value in ITEM_OPTIONS. if ITEM_OPTIONS is [male,female],
+	//              then ITEM_DEFAULT_VALUE's value can be 'male' or 'female'
+  -->
+<!ATTLIST searchItem defaultValue CDATA #IMPLIED>
+<!-- 
+	//type:array
+	//value option: value in options. can be [male], [female] or[male,female]
+	//when default value has more, like if item type is checkBox, then used.
+  -->
+<!ATTLIST searchItem defaultValues CDATA #IMPLIED>
+
+
+
+
+
+<!-- ========== columns element ======== -->
+<!ELEMENT columns (column+)>
+
+
+	
+<!-- ========== column element ======== -->	
+<!ELEMENT column (leftImageTemplate?,contentTemplate,rightTemplate?,footerTemplate?)>
+
+
+<!-- boolean -->
+<!-- drag column for delete or change column index. -->
+<!ATTLIST column draggable CDATA (false|true) "false">
+<!-- sort data by column. -->
+<!ATTLIST column sortable CDATA (false|true) "false">
+<!-- drag and resize column's width. -->
+<!ATTLIST column resizeable CDATA (false|true) "false">
+
+<!-- ----column field --------  -->
+<!-- either 'dataField' or 'dataFields' -->
+<!ATTLIST column dataField CDATA (false|true) "false">
+<!--  type:array. like:[id,name]  -->
+<!ATTLIST column dataFields CDATA (false|true) "false">
+
+<!-- -----column style -----  -->
+<!--  int  -->
+<!ATTLIST column colWidth CDATA #IMPLIED>	
+<!--  column header text  -->
+<!ATTLIST column headerText CDATA #IMPLIED>	
+
+<!-- -----column header style-----  -->
+<!--  int  -->
+<!ATTLIST column headerFontSize CDATA "20">	
+<!--  color string  -->
+<!ATTLIST column headerFontColor CDATA "#FF000000">	
+<!ATTLIST column headerFontStyle CDATA (italic|normal) "normal">	
+<!ATTLIST column headerFontWeight CDATA (bold|normal) "normal">	
+<!ATTLIST column headerFontAlight CDATA (left|center|right) "center">	
+<!ATTLIST column headerFontDecoration CDATA (underline|none) "none">	
+
+<!-- -----olumn cell style-----  -->
+<!--  int  -->
+<!ATTLIST column fontSize CDATA "20">	
+<!--  color string  -->
+<!ATTLIST column fontColor CDATA "#FF000000">	
+<!ATTLIST column fontStyle CDATA (italic|normal) "normal">	
+<!ATTLIST column fontWeight CDATA (bold|normal) "normal">	
+<!ATTLIST column fontAlight CDATA (left|center|right) "center">	
+<!ATTLIST column fontDecoration CDATA (underline|none) "none">	
+
+<!-- -----header and column render-----  -->
+<!--
+	//'default'      -- just for text label
+	//'action'       -- column has buttons, can do edit, delete, view details....
+	//'status'       -- some status for item. not yet //TODO
+	//'checkBox'     -- column has checkBox. can select more items and delete or do something for them.....
+	//'combination'  -- the custom column. please check 'mark1', look at below.
+-->
+<!ATTLIST column headerRenderer CDATA (default|status|checkBox) "default">	
+<!ATTLIST column itemRenderer CDATA (default|action|status|checkBox|combination) "default">	
+
+<!-- -----action column. the column renderer is 'action'-----  -->
+<!-- boolean -->
+<!-- need showing edit, view and delete button in action column? -->
+<!-- drag column for delete or change column index. -->
+<!ATTLIST column doEditAction CDATA (false|true) "true">
+<!ATTLIST column doViewAction CDATA (false|true) "true">
+<!ATTLIST column doDeleteAction CDATA (false|true) "true">
+<!ATTLIST column doCustomAction CDATA (false|true) "false">
+
+<!-- 
+    /*   mark1: combination item.
+     *   1.combination column. the List structure used.
+     *   2.combination cell. the view panel used.
+    ___________________________________________________
+    |                                                  |
+    |  ~~~~~~~~~~~~                                    |
+    |  |          |   #################################|
+    |  | image    |     textContent          #right    |
+    |  |          |                          #content  |
+    |  |          |   #################################|
+    |  ~~~~~~~~~~~~                                    |
+    |  ################################################|
+    |                   footerContent                  |
+    |  ################################################|
+    |__________________________________________________|
+
+	*/
+-->
+<!-- -----combination column the column renderer is 'combination'-----  -->
+<!-- boolean -->
+<!-- if true must include contentTemplate element. -->
+<!ATTLIST column showTextContent CDATA (false|true) "true">
+<!-- if true must include rightTemplate element. -->
+<!ATTLIST column showRightContent CDATA (false|true) "false">
+<!-- if true must include footerTemplate element. -->
+<!ATTLIST column showFooterContent CDATA (false|true) "false">
+<!-- if true must include leftImageTemplate element. -->
+<!ATTLIST column showLeftImage CDATA (false|true) "false">
+
+
+
+
+<!-- ========== leftImageTemplate element ======== -->
+<!ELEMENT leftImageTemplate  EMPTY>
+<!--
+	//The Combination column's subelement.
+	//option value: if dataFields is [id,name,photo,image],
+	//              then imageURLFiled's value can be 'id', 'name', 'photo' or 'image'
+-->
+<!ATTLIST leftImageTemplate imageURLFiled CDATA #REQUIRED>
+
+
+
+<!-- ========== contentTemplate element ======== -->
+<!ELEMENT contentTemplate (#PCDATA)>
+
+
+<!-- ========== rightTemplate element ======== -->
+<!ELEMENT rightTemplate (#PCDATA)>
+
+
+<!-- ========== footerTemplate element ======== -->
+<!ELEMENT footerTemplate (#PCDATA)>
+
+
+
+
+<!-- ========== editPanel element ======== -->
+<!ELEMENT editPanel (editItem+)>
+<!ELEMENT editItem  EMPTY>
+<!ATTLIST editItem label CDATA #REQUIRED>
+<!--
+	requirement. no default value. can't be null or empty.
+	when send parameter to server, the server side get data use key. 
+-->
+<!ATTLIST editItem key CDATA #REQUIRED>
+<!ATTLIST editItem remark CDATA #IMPLIED>
+<!--  'date' and more will be coming soon  -->
+<!ATTLIST editItem type CDATA (text|radio|checkBox) "text">
+<!-- array like [male,female]  -->
+<!ATTLIST editItem options CDATA #IMPLIED>
+<!-- 
+	//value option: value in ITEM_OPTIONS. if ITEM_OPTIONS is [male,female],
+	//              then ITEM_DEFAULT_VALUE's value can be 'male' or 'female'
+  -->
+<!ATTLIST editItem defaultValue CDATA #IMPLIED>
+<!-- 
+	//type:array
+	//value option: value in options. can be [male], [female] or[male,female]
+	//when default value has more, like if item type is checkBox, then used.
+  -->
+<!ATTLIST editItem defaultValues CDATA #IMPLIED>
+
+
+
+
+
+<!-- ========== editPanel element ======== -->
+<!ELEMENT addPanel (addItem+)>
+<!ELEMENT addItem  EMPTY>
+<!ATTLIST addItem label CDATA #REQUIRED>
+<!--
+	requirement. no default value. can't be null or empty.
+	when send parameter to server, the server side get data use key. 
+-->
+<!ATTLIST addItem key CDATA #REQUIRED>
+<!ATTLIST addItem remark CDATA #IMPLIED>
+<!--  'date' and more will be coming soon  -->
+<!ATTLIST addItem type CDATA (text|radio|checkBox) "text">
+<!-- array like [male,female]  -->
+<!ATTLIST addItem options CDATA #IMPLIED>
+<!-- 
+	//value option: value in ITEM_OPTIONS. if ITEM_OPTIONS is [male,female],
+	//              then ITEM_DEFAULT_VALUE's value can be 'male' or 'female'
+  -->
+<!ATTLIST addItem defaultValue CDATA #IMPLIED>
+<!-- 
+	//type:array
+	//value option: value in options. can be [male], [female] or[male,female]
+	//when default value has more, like if item type is checkBox, then used.
+  -->
+<!ATTLIST addItem defaultValues CDATA #IMPLIED>
+
+
+
+
+<!-- ========== viewPanel element ======== -->
+<!ELEMENT addPanel ((leftImageTemplate?,contentTemplate,rightTemplate?,footerTemplate?))>
+<!--  type:array. like:[id,cusName,grade,phoneNumber,status,photo,remark]  -->
+<!ATTLIST addPanel dataFields CDATA #REQUIRED>
+<!ATTLIST addPanel itemRenderer CDATA #FIXED "combination">
+<!-- boolean -->
+<!-- if true must include contentTemplate element. -->
+<!ATTLIST addPanel showTextContent CDATA (false|true) "true">
+<!-- if true must include rightTemplate element. -->
+<!ATTLIST addPanel showRightContent CDATA (false|true) "false">
+<!-- if true must include footerTemplate element. -->
+<!ATTLIST addPanel showFooterContent CDATA (false|true) "false">
+<!-- if true must include leftImageTemplate element. -->
+<!ATTLIST addPanel showLeftImage CDATA (false|true) "false">
+
+<!-- 
+leftImageTemplate element 
+contentTemplate element
+rightTemplate element 
+footerTemplate element 
+same as column's subelement if column's type is 'combination'
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
