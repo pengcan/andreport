@@ -132,10 +132,16 @@
 	//id paramete
 	String id = request.getParameter("id");
 
-
-
-
-
+	
+	
+	//返回数据集
+	//请注意Key 为 data
+	result.put("data", list);
+	
+	//返回总条数
+	//将数据的总条数放入结果集，并返回。用于分页 
+	//请注意Key 为 total
+	result.put("total", 3);
 
 
 
