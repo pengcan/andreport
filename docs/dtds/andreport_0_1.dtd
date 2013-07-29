@@ -45,6 +45,16 @@
 -->
 <!ATTLIST dataTable pagingType CDATA (usePagingBar|useDropdown) "usePagingBar">
 
+<!--   -----fix parameter key----------- -->
+<!-- string -->
+<!--
+	//default:userId
+	//sent the parameter to server at each time.
+	//when start andreport app, use Bundle to put data to andreport, you can check the demo 'manageandreport'
+-->
+<!ATTLIST dataTable fixParamKey CDATA "userId">
+<!ATTLIST dataTable MACAdd  #FIXED "MACAddress">
+
 <!--   -----table style----------- -->
 <!-- int -->
 <!ATTLIST dataTable headerHeight CDATA "40">

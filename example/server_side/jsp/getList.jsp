@@ -7,6 +7,16 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
+	//客户端提交每次固定提交的数据。
+	//MAC地址
+	String MacAddress = request.getParameter("MACAddress");
+	
+	//当其他app 调用andreport应用时传递的参数。
+	//默认是userId， 当然也可以通过andreport的结构文件配置
+	//dt:fixParamKey="userId"
+	String fixParamData = request.getParameter("userId");
+	System.out.println("MacAddress:"+MacAddress+"-----fixParamData:"+fixParamData);
+	
 	//客户端提交的分页数据。
 	//每页显示的条数
 	String itemsPerPage = request.getParameter("itemsPerPage");

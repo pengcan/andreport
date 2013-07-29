@@ -22,13 +22,16 @@ public class DTXMLTagConstants {
 	public static final String COLUMN = "column";//COLUMNS's subelement
 	
 	//-----------------------
-	//combination.
-	//1.view panel's template.
-	//2.prefix + element name is combination column template. List used.
+	//combination column element
+	//look at mark1
 	//-----------------------
+	//the template for 'textContent'
 	public static final String CONTENT_TEMPLATE = "contentTemplate";
+	//the template for 'rightContent'
 	public static final String RIGHT_TEMPLATE = "rightTemplate";
+	//the template for 'footerContent'
 	public static final String FOOTER_TEMPLATE = "footerTemplate";
+	//the template for 'left image'
 	public static final String LEFT_IMAGE_TEMPLATE = "leftImageTemplate";
 	
 	//-----------------------
@@ -104,6 +107,17 @@ public class DTXMLTagConstants {
 	//TODO will change other way to implements paging
 	public static final String PAGING_TYPE = "pagingType";
 
+	//-------------fix parameter key------------
+	//type:string
+	//default:userId
+	//sent the parameter to server at each time.
+	//when start andreport app, use Bundle to put data to andreport, you can check the demo 'manageandreport'
+	public static final String FIX_PARAM_KEY = "fixParamKey";
+	//type:string
+	//fixed: MACAddress
+	//sent the MAC Address string to server each time.
+	public static final String MAC_ADD = "MACAddress";
+	
 	//-------------table style------------
 	//type:int
 	//default:40
@@ -241,8 +255,8 @@ public class DTXMLTagConstants {
     |                                                  |
     |  ~~~~~~~~~~~~                                    |
     |  |          |   #################################|
-    |  | image    |     textContent          #right    |
-    |  |          |                          #content  |
+    |  | image    |     textContent         | #right   |
+    |  |          |                         | #content |
     |  |          |   #################################|
     |  ~~~~~~~~~~~~                                    |
     |  ################################################|
@@ -339,4 +353,31 @@ public class DTXMLTagConstants {
 	//report structure file URL
 	/***********************************************************************************************/
 	public static final String REPORT_STRUCT_URL="reportStructURL";
+	
+	
+
+	//-----------------------
+	//the parameter send to server 
+	//-----------------------	
+	public final static String PAGING_PARAM_KEY_ID = "id";
+	public final static String PAGING_PARAM_KEY_IDS = "ids";
+	public final static String PAGING_PARAM_KEY_PAGE_NUMBER = "pageNumber";
+	public final static String PAGING_PARAM_KEY_ITEMS_PERPAGE = "itemsPerPage";
+	//固定的
+	public final static String MACAdd = "MACAddress";
+	//默认是userId， 但是也可以在结构文件中配置FIX_PARAM_KEY， 来改变
+	public final static String FIX_PARAM_KEY_DEFAULT_VALUE = "userId";
+	
+	
+	//-----------------------
+	//the data from server 
+	//-----------------------	
+	public final static String SERVVER_DATA_KEY_TOTAL = "total";
+	public final static String SERVVER_DATA_KEY_DATA = "data";
+	
+	//-----------------------
+	//the data from calling app 
+	//-----------------------	
+	public final static String BUNDLE_EXTRA_KEY = "andreport";	
+	
 }

@@ -1,6 +1,15 @@
 <?php 
 header('Content-type: text/json; charset=utf-8'); 
 
+//客户端提交每次固定提交的数据。
+//MAC地址
+$MacAddress = $_POST["MACAddress"];
+
+//当其他app 调用andreport应用时传递的参数。
+//默认是userId， 当然也可以通过andreport的结构文件配置
+//dt:fixParamKey="userId"
+$fixParamData = $_POST["userId"];
+
 //获取移端提交的参数
 //分页数据
 $itemsPerPage = $_POST["itemsPerPage"];

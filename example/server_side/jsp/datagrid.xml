@@ -29,6 +29,8 @@
 	
 	dt:reportTitle="客户信息"
 	
+	dt:fixParamKey="userId"
+	
 	dt:serachURL="http://192.168.0.8:8088/android_ch24_serverside/getList.jsp"
 	dt:addedAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/addAndGetList.jsp"
 	dt:editAndGetListActionURL="http://192.168.0.8:8088/android_ch24_serverside/editAndGetList.jsp"
