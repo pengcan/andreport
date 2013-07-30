@@ -1,6 +1,4 @@
-1， datagrid.xml 和 list.xml 是andreport应用的结构配置文件。
-
-2， manageandreport 目录下面是示例源码。
+manageandreport 目录下面是示例源码。
 
 示例的关键代码：
 	调用主界面,并传递参数。该参数在andreport发送请求时会一起发送给服务端：
