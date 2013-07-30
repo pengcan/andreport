@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE AndReport PUBLIC
 	"-//AndReport Software Foundation//DTD AndReport Configuration 0.1//EN"
 	"http://www.andreport.cn/dtds/andreport_0_1.dtd">
 <andReport xmlns:dt="http://schemas.andreport.cn/cn.andreport.datatables">
-<!-- pagingType="usePagingBar|useDropdown" -->    
 <dataTable
 	dt:lineColor="#FFCCCCCC"
 	dt:headerHeight="40" 
@@ -11,11 +10,9 @@
 	dt:headerBackgroundColors="[#FFE1E1E1,#FFCECECE,#FFE1E1E1]"
 	dt:evenRowBackgroundColor="#FFEEFFEE"
 	dt:oddRowBackgroundColor="#FFE1FFDA"
-
-	dt:canRemoveColumn="true"
-	dt:canAddColumn="true"
 	
 	dt:itemsPerPage="10"
+	dt:pagingType="usePagingBar"
 	
 	dt:showSearch="true"
 	dt:showSettings="true"
@@ -23,36 +20,32 @@
 	dt:showMultipleDelete="true"
 	dt:showNavigationBar="true"
 	
-	dt:pagingType="usePagingBar"
-	
-	dt:screenOrientation="landscape" 
 	
 	dt:reportTitle="客户信息"
 	
-	dt:serachURL="http://pengcan2006.gotoip3.com/getList.php"
-	dt:addedAndGetListActionURL="http://pengcan2006.gotoip3.com/addedAndGetList.php"
-	dt:editAndGetListActionURL="http://pengcan2006.gotoip3.com/editAndGetList.php"
-	dt:deleteAndGetListActionURL="http://pengcan2006.gotoip3.com/deleteAndGetList.php"
+	dt:serachURL="http://pengcan2006.gotoip3.com/getList.php" 
+	dt:addedAndGetListActionURL="http://pengcan2006.gotoip3.com/addedAndGetList.php" 
+	dt:editAndGetListActionURL="http://pengcan2006.gotoip3.com/editAndGetList.php" 
+	dt:deleteAndGetListActionURL="http://pengcan2006.gotoip3.com/deleteAndGetList.php" 
 	dt:multipleDeleteAndGetListActionURL="http://pengcan2006.gotoip3.com/multipleDeleteAndGetList.php"
-	dt:customActionURL=""
-	dt:findEditItemByIdURL="http://pengcan2006.gotoip3.com/findViewItemById.php"
-	dt:findViewItemByIdURL="http://pengcan2006.gotoip3.com/findEditItemById.php"
+	dt:findEditItemByIdURL="http://pengcan2006.gotoip3.com/findEditItemById.php"
+	dt:findViewItemByIdURL="http://pengcan2006.gotoip3.com/findViewItemById.php"
+	
 	>
 	<!-- type:text|radio|checkBox -->
 	<searchPanel>
-	    <searchItem dt:label="编号：" dt:key="id" dt:type="text" dt:remark=""/>
 	    <searchItem dt:label="姓名：" dt:key="cusName"/>
 	    <searchItem dt:label="性别：" dt:key="grade" dt:type="radio" dt:options="[男,女,不限]" dt:defaultValue="不限"/>
 	    <searchItem dt:label="电话：" dt:key="phoneNumber"/>
-	    <searchItem dt:label="状态：" dt:key="classStatus" dt:type="checkBox" dt:options="[高级客户,普通客户,潜在客户]" dt:defaultValues="[高级客户,普通客户]"/>
+	    <searchItem dt:label="状态：" dt:key="classStatus" dt:type="checkBox" dt:options="[高级,普通,潜在]" dt:defaultValues="[高级,普通]"/>
 	</searchPanel>
 	
 	<columns>
 	   
 	    <column dt:itemRenderer="checkBox" dt:headerRenderer="checkBox" dt:dataField="id"/>
-	    
+	    <!--
 	    <column dt:dataField="id" dt:headerText="编号"/>
-	    
+	    -->
 		<column dt:dataField="cusName" 
 			dt:headerText="客户" 
 			
@@ -64,28 +57,29 @@
 			
 			dt:fontColor="#FF000000"
 			dt:fontStyle="italic"
-			dt:fontSize="20"
 			dt:fontWeight="bold"
 			dt:fontAlight="center"
 			dt:fontDecoration="underline"
-			
 			dt:draggable="true"
 			dt:sortable="true"
 			dt:resizeable="true"
 			
 		    />
+			<!--
 		<column dt:dataField="grade" dt:headerText="性别" 
 		    dt:draggable="true"
 			dt:sortable="true"
 			dt:resizeable="true"
 			/>
+			-->
 		<column dt:dataField="phoneNumber" dt:headerText="电话" 
 		    dt:draggable="true"
 			dt:sortable="true"
 			dt:resizeable="true"
 		    />
+			<!--
 		<column dt:dataField="status" dt:headerText="状态"/>
-		
+			-->
 		 
 		<column dt:itemRenderer="action" dt:dataField="id" dt:headerText="操作"
 		    dt:doEditAction="true"
@@ -98,18 +92,17 @@
 	</columns>
 	
 	<editPanel>
-	    <editItem dt:label="编号：" dt:key="id" dt:editable="false"/>
 	    <editItem dt:label="姓名：" dt:key="cusName"/>
 	    <editItem dt:label="性别：" dt:key="grade" dt:type="radio" dt:options="[男,女]"/>
 	    <editItem dt:label="电话：" dt:key="phoneNumber" dt:type="text" dt:remark="*请勿泄漏"/>
-	    <editItem dt:label="状态：" dt:key="status" dt:type="radio" dt:options="[高级客户,普通客户,潜在客户]"/>
+	    <editItem dt:label="状态：" dt:key="status" dt:type="radio" dt:options="[高级,普通,潜在]"/>
 	</editPanel>
 	
 	<addPanel>
 	    <addItem dt:label="姓名：" dt:key="cusName" dt:type="text" dt:remark=""/>
 	    <addItem dt:label="性别：" dt:key="grade" dt:type="radio" dt:options="[男,女]" dt:defaultValue="男"/>
 	    <addItem dt:label="电话：" dt:key="phoneNumber"/>
-	    <addItem dt:label="状态：" dt:key="status" dt:type="radio" dt:options="[高级客户,普通客户,潜在客户]"  dt:defaultValue="普通客户"/>
+	    <addItem dt:label="状态：" dt:key="status" dt:type="radio" dt:options="[高级,普通,潜在]"  dt:defaultValue="普通"/>
 	</addPanel>
 	
 	<viewPanel dt:dataFields="[id,cusName,grade,phoneNumber,status,photo,remark]" 

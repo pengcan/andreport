@@ -40,10 +40,10 @@
 <!-- type:int  -->
 <!ATTLIST dataTable itemsPerPage CDATA  "10">
 <!--
-	//maybe 'useDropdown' for List.  'usePagingBar' for datagrid
+	//'useDropdown' for List.  'usePagingBar' for datagrid
 	//TODO will change other way to implements paging
 -->
-<!ATTLIST dataTable pagingType CDATA (usePagingBar|useDropdown) "usePagingBar">
+<!ATTLIST dataTable pagingType CDATA (usePagingBar|useDropdown) #REQUIRED>
 
 <!--   -----fix parameter key----------- -->
 <!-- string -->
@@ -136,7 +136,7 @@
 
 <!-- -----column header style-----  -->
 <!--  int  -->
-<!ATTLIST column headerFontSize CDATA "20">	
+<!ATTLIST column headerFontSize CDATA "16">	
 <!--  color string  -->
 <!ATTLIST column headerFontColor CDATA "#FF000000">	
 <!ATTLIST column headerFontStyle CDATA (italic|normal) "normal">	
@@ -146,7 +146,7 @@
 
 <!-- -----olumn cell style-----  -->
 <!--  int  -->
-<!ATTLIST column fontSize CDATA "20">	
+<!ATTLIST column fontSize CDATA "16">	
 <!--  color string  -->
 <!ATTLIST column fontColor CDATA "#FF000000">	
 <!ATTLIST column fontStyle CDATA (italic|normal) "normal">	
